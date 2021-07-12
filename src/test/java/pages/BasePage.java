@@ -1,11 +1,13 @@
 package pages;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+@Log4j2
 public abstract class BasePage {
     WebDriver driver;
     WebDriverWait wait;
@@ -19,10 +21,12 @@ public abstract class BasePage {
 
     public boolean isExist(By locator) {
         try {
+            log.info("Find element on the page by locator " + locator);
             wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
             driver.findElement(locator);
             return true;
         } catch (NoSuchElementException exception) {
+            log.fatal("Element was not found on the page by locator " + locator);
             System.out.println(exception.getMessage());
             return false;
         }
