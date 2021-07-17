@@ -7,15 +7,15 @@ import static org.testng.Assert.assertTrue;
 
 public class LoginTest extends BaseTest {
 
-    @Test
+    @Test(description = "Login should be successful")
     public void login() {
         boolean isOpened = loginPage
                 .openLoginPage(baseUrl)
                 .isPageOpened();
-        assertTrue(isOpened, "Login Page was not opened");
+        assertTrue(isOpened, "Login page was not opened");
         isOpened = loginPage
                 .login(email, password)
                 .isPageOpened();
-        assertTrue(isOpened, "Home Page was not opened");
+        assertTrue(isOpened, "Home page was not opened");
     }
 }
