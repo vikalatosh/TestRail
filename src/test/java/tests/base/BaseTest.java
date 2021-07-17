@@ -12,10 +12,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
-import pages.AddProjectPage;
-import pages.HomePage;
-import pages.LoginPage;
-import pages.ProjectsPage;
+import pages.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -28,9 +25,11 @@ public abstract class BaseTest {
     protected String email;
     protected String password;
     protected LoginPage loginPage;
-    protected AddProjectPage addProjectPage;
+    protected ProjectModalPage projectModalPage;
     protected HomePage homePage;
     protected ProjectsPage projectsPage;
+    protected ProjectDetailsPage projectDetailsPage;
+    protected TestCaseModal testCaseModal;
 
     @Step("Open browser")
     @BeforeMethod()
@@ -43,16 +42,18 @@ public abstract class BaseTest {
         options.addArguments("--disable-notifications");
         driver = new ChromeDriver(options);
         testContext.setAttribute("driver", driver);
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        wait = new WebDriverWait(driver, 10);
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        wait = new WebDriverWait(driver, 20);
         driver.manage().window().maximize();
         baseUrl = utils.PropertyReader.getProperty("TESTRAIL_URL", "testrail.baseUrl");
         email = utils.PropertyReader.getProperty("TESTRAIL_EMAIL", "testrail.email");
         password = utils.PropertyReader.getProperty("TESTRAIL_PASSWORD", "testrail.password");
         loginPage = new LoginPage(driver);
-        addProjectPage = new AddProjectPage(driver);
+        projectModalPage = new ProjectModalPage(driver);
         homePage = new HomePage(driver);
         projectsPage = new ProjectsPage(driver);
+        projectDetailsPage = new ProjectDetailsPage(driver);
+        testCaseModal = new TestCaseModal(driver);
     }
 
     @Step("Close browser")
