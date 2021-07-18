@@ -12,7 +12,10 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
-import pages.*;
+import steps.LoginSteps;
+import steps.ProjectSteps;
+import steps.StartSteps;
+import steps.TestCaseSteps;
 
 import java.util.concurrent.TimeUnit;
 
@@ -24,12 +27,10 @@ public abstract class BaseTest {
     protected String baseUrl;
     protected String email;
     protected String password;
-    protected LoginPage loginPage;
-    protected ProjectModalPage projectModalPage;
-    protected HomePage homePage;
-    protected ProjectsPage projectsPage;
-    protected ProjectDetailsPage projectDetailsPage;
-    protected TestCaseModal testCaseModal;
+    protected StartSteps startSteps;
+    protected LoginSteps loginSteps;
+    protected ProjectSteps projectSteps;
+    protected TestCaseSteps testCaseSteps;
 
     @Step("Open browser")
     @BeforeMethod()
@@ -48,12 +49,10 @@ public abstract class BaseTest {
         baseUrl = utils.PropertyReader.getProperty("TESTRAIL_URL", "testrail.baseUrl");
         email = utils.PropertyReader.getProperty("TESTRAIL_EMAIL", "testrail.email");
         password = utils.PropertyReader.getProperty("TESTRAIL_PASSWORD", "testrail.password");
-        loginPage = new LoginPage(driver);
-        projectModalPage = new ProjectModalPage(driver);
-        homePage = new HomePage(driver);
-        projectsPage = new ProjectsPage(driver);
-        projectDetailsPage = new ProjectDetailsPage(driver);
-        testCaseModal = new TestCaseModal(driver);
+        loginSteps = new LoginSteps(driver);
+        projectSteps = new ProjectSteps(driver);
+        startSteps = new StartSteps(driver);
+        testCaseSteps = new TestCaseSteps(driver);
     }
 
     @Step("Close browser")
