@@ -23,8 +23,9 @@ public class TestCaseModal extends BasePage {
         return isExist(PAGE_TITLE);
     }
 
-    public void createTestCase(TestCase testCase) {
+    public TestCaseModal createTestCase(TestCase testCase) {
         driver.findElement(TITLE_INPUT).sendKeys(testCase.getTitle());
         driver.findElement(ADD_TEST_CASE_BUTTON).click();
+        return this;
     }
 }

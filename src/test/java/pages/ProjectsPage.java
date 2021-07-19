@@ -28,9 +28,10 @@ public class ProjectsPage extends BasePage {
     }
 
     @Step("Get message on the page")
-    public String getMessage() {
+    public ProjectsPage getMessage() {
         log.info("Get message on the page by locator " + MESSAGE);
-        return driver.findElement(MESSAGE).getText();
+        driver.findElement(MESSAGE).getText();
+        return this;
     }
 
     @Step("Check project {actualName} is exist")
