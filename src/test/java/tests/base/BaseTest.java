@@ -35,7 +35,6 @@ public abstract class BaseTest {
     @Step("Open browser")
     @BeforeMethod()
     public void setUp(@Optional("chrome") String browser, ITestContext testContext) {
-        log.info("Open browser");
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
@@ -58,7 +57,6 @@ public abstract class BaseTest {
     @Step("Close browser")
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
-        log.info("Close browser");
         driver.quit();
     }
 }
