@@ -1,5 +1,6 @@
 package pages;
 
+import elements.Input;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import models.Project;
@@ -25,7 +26,7 @@ public class ProjectModalPage extends BasePage {
     @Step("Create new project")
     public ProjectsPage createProject(Project project) {
         log.info("Create new project " + project.getName());
-        driver.findElement(NAME_INPUT).sendKeys(project.getName());
+        new Input(driver, "Name").write(project.getName());
         driver.findElement(ADD_PROJECT_BUTTON).click();
         return new ProjectsPage(driver);
     }

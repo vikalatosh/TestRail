@@ -1,5 +1,6 @@
 package pages;
 
+import elements.Input;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
@@ -31,8 +32,8 @@ public class LoginPage extends BasePage {
     @Step("Log in by email {email}, password {password}")
     public HomePage login(String email, String password) {
         log.info("Log in by email " + email + ", password " + password);
-        driver.findElement(EMAIL_INPUT).sendKeys(email);
-        driver.findElement(PASSWORD_INPUT).sendKeys(password);
+        new Input(driver, "Name").write(email);
+        new Input(driver, "Password").write(password);
         driver.findElement(LOGIN_BUTTON).click();
         return new HomePage(driver);
     }

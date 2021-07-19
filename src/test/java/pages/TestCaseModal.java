@@ -1,17 +1,13 @@
 package pages;
 
+import elements.DropDownSearch;
+import elements.Input;
 import models.TestCase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class TestCaseModal extends BasePage {
     public static final By PAGE_TITLE = By.xpath("//div[contains(text(),'Add Test Case')]");
-    public static final By TITLE_INPUT = By.id("title");
-    public static final By ESTIMATE_INPUT = By.id("estimate");
-    public static final By REFERENCES_INPUT = By.id("refs");
-    //li[contains(text(),'Regression')]
-    //*[contains(text(),'Type')]//ancestor::td/*[contains(@id,'id_chzn')]
-
     public static final By ADD_TEST_CASE_BUTTON = By.id("accept");
 
     public TestCaseModal(WebDriver driver) {
@@ -24,7 +20,14 @@ public class TestCaseModal extends BasePage {
     }
 
     public TestCaseModal createTestCase(TestCase testCase) {
-        driver.findElement(TITLE_INPUT).sendKeys(testCase.getTitle());
+        new Input(driver, "Title").write(testCase.getTitle());
+        new DropDownSearch(driver, "Section").select(testCase.getSection());
+        new DropDownSearch(driver, "Template").select(testCase.getTemplate());
+        new DropDownSearch(driver, "Type").select(testCase.getType());
+        new DropDownSearch(driver, "Priority").select(testCase.getPriority());
+        new Input(driver, "Estimate").write(testCase.getEstimate());
+        new Input(driver, "Refs").write(testCase.getReferences());
+        new DropDownSearch(driver, "Automation Type").select(testCase.getAutomationType());
         driver.findElement(ADD_TEST_CASE_BUTTON).click();
         return this;
     }
