@@ -18,6 +18,7 @@ public class TestCaseTest extends BaseTest {
                 .isLoginPageOpened();
         loginSteps
                 .loginByEmailAndPassword(email, password)
+                .clickTheButtonLogIn()
                 .isHomePageOpened();
         projectSteps
                 .clickTheButtonAddProject()
