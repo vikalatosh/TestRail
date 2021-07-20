@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import pages.HomePage;
 import pages.LoginPage;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class LoginSteps {
@@ -15,16 +16,27 @@ public class LoginSteps {
         homePage = new HomePage(driver);
     }
 
-    public HomePage login(String email, String password) {
+    public LoginSteps loginByEmailAndPassword(String email, String password) {
         loginPage
                 .login(email, password);
-        return homePage;
+        return this;
     }
 
-    public HomePage isPageOpened() {
-        boolean isOpened = loginPage
+    public LoginSteps clickTheButtonLogIn() {
+        loginPage
+                .clickLogIn();
+        return this;
+    }
+
+    public void isHomePageOpened() {
+        boolean isOpened = homePage
                 .isPageOpened();
         assertTrue(isOpened, "Home page was not opened");
-        return homePage;
+    }
+
+    public void validateLoginPageMessage(String errorMessage) {
+        String message = loginPage
+                .getLoginPageMessage();
+        assertEquals(message, errorMessage, "Error message is not correct");
     }
 }

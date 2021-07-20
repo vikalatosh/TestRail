@@ -12,7 +12,6 @@ import static org.testng.Assert.assertEquals;
 public class ProjectsPage extends BasePage {
     public static final By BANNER_LINK = By.id("bannerLink");
     public static final By DASHBOARD_BUTTON = By.xpath("//*[text()='Dashboard']");
-    //*[contains(text(),'Successfully added the new project.')]
     public static final By MESSAGE = By.cssSelector(".message-success");
     public static final String PROJECT_NAME_TEXT = "//*[contains(text(),'%s')]";
 
@@ -23,23 +22,21 @@ public class ProjectsPage extends BasePage {
 
     @Step("Check Projects page is opened")
     public boolean isPageOpened() {
-        log.info("Check Projects page is opened by locator " + BANNER_LINK);
+        log.debug("Check Projects page is opened by locator: {}", BANNER_LINK);
         return isExist(BANNER_LINK);
     }
 
     @Step("Get message on the page")
-    public ProjectsPage getMessage() {
-        log.info("Get message on the page by locator " + MESSAGE);
-        driver.findElement(MESSAGE).getText();
-        return this;
+    public String getMessage() {
+        log.debug("Get message on the page by locator: {}", MESSAGE);
+        return driver.findElement(MESSAGE).getText();
     }
 
     @Step("Check project {actualName} is exist")
-    public ProjectsPage projectIsExist(Project project) {
+    public void projectIsExist(Project project) {
         String actualName = driver.findElement(By.xpath(String.format(PROJECT_NAME_TEXT, project.getName()))).getText();
-        log.info("Check project " + actualName + " is exist");
+        log.info("Check project {} is exist", actualName);
         assertEquals(actualName, project.getName());
-        return this;
     }
 
     public ProjectDetailsPage openProjectDetails(Project project) {

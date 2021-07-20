@@ -21,12 +21,12 @@ public abstract class BasePage {
 
     public boolean isExist(By locator) {
         try {
-            log.info("Find element on the page by locator " + locator);
+            log.debug("Find element on the page by locator: {}", locator);
             wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
             driver.findElement(locator);
             return true;
         } catch (NoSuchElementException exception) {
-            log.fatal("Element was not found on the page by locator " + locator);
+            log.fatal("Element was not found on the page by locator: {}", locator);
             System.out.println(exception.getMessage());
             return false;
         }

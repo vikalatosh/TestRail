@@ -7,6 +7,8 @@ import pages.ProjectDetailsPage;
 import pages.ProjectsPage;
 import pages.TestCaseModal;
 
+import static org.testng.Assert.assertTrue;
+
 public class TestCaseSteps {
     ProjectsPage projectsPage;
     ProjectDetailsPage projectDetailsPage;
@@ -18,20 +20,28 @@ public class TestCaseSteps {
         testCaseModal = new TestCaseModal(driver);
     }
 
-    public ProjectDetailsPage openProjectDetails(Project project) {
-        return projectsPage
+    public TestCaseSteps openProjectDetailsPage(Project project) {
+        projectsPage
                 .openProjectDetails(project);
+        return this;
     }
 
-    public TestCaseModal clickButtonAdd() {
-        return projectDetailsPage
+    public TestCaseSteps clickTheButtonAdd() {
+        projectDetailsPage
                 .clickButtonAdd();
+        return this;
     }
 
-    public TestCaseModal createTestCase(TestCase testCase) {
-        testCaseModal
-                .createTestCase(testCase)
+    public TestCaseSteps isTestCaseModalPageOpened() {
+        boolean isOpened = testCaseModal
                 .isPageOpened();
-        return testCaseModal;
+        assertTrue(isOpened, "Test Case modal page was not opened");
+        return this;
+    }
+
+    public TestCaseSteps createTestCase(TestCase testCase) {
+        testCaseModal
+                .createTestCase(testCase);
+        return this;
     }
 }

@@ -15,20 +15,22 @@ public class TestCaseTest extends BaseTest {
         TestCase testCase = TestCaseFactory.get();
         startSteps
                 .openLoginPage(baseUrl)
-                .isPageOpened();
+                .isLoginPageOpened();
         loginSteps
-                .login(email, password)
-                .isPageOpened();
+                .loginByEmailAndPassword(email, password)
+                .clickTheButtonLogIn()
+                .isHomePageOpened();
         projectSteps
-                .clickButtonAddProject()
-//                .isPageOpened()
-                .createProject(project)
-                .getMessage()
-                .projectIsExist(project);
+                .clickTheButtonAddProject()
+                .isProjectModalPageOpened()
+                .createNewProject(project)
+                .isProjectsPageOpened()
+                .getMessageAfterCreatingNewProject()
+                .projectIsExistOnTheProjectsPage(project);
         testCaseSteps
-                .openProjectDetails(project)
-//                .isPageOpened()
-                .clickButtonAdd()
+                .openProjectDetailsPage(project)
+                .clickTheButtonAdd()
+                .isTestCaseModalPageOpened()
                 .createTestCase(testCase);
     }
 }

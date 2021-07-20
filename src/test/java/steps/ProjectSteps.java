@@ -20,42 +20,41 @@ public class ProjectSteps {
         projectsPage = new ProjectsPage(driver);
     }
 
-    public ProjectModalPage clickButtonAddProject() {
+    public ProjectSteps clickTheButtonAddProject() {
         homePage
                 .clickButtonAddProject();
-        return projectModalPage;
+        return this;
     }
 
-    public ProjectModalPage isPageOpened() {
+    public ProjectSteps isProjectModalPageOpened() {
         boolean isOpened = projectModalPage
                 .isPageOpened();
-        assertTrue(isOpened, "'Add Project' page was not opened");
-        return projectModalPage;
+        assertTrue(isOpened, "Project modal page was not opened");
+        return this;
     }
 
-    public ProjectsPage createProject(Project project) {
+    public ProjectSteps createNewProject(Project project) {
         projectModalPage
                 .createProject(project);
-        return projectsPage;
+        return this;
     }
 
-    public ProjectsPage isProjectsPageOpened() {
-        boolean isOpened = projectModalPage
+    public ProjectSteps isProjectsPageOpened() {
+        boolean isOpened = projectsPage
                 .isPageOpened();
         assertTrue(isOpened, "Projects page was not opened");
-        return projectsPage;
+        return this;
     }
 
-    public ProjectsPage getMessage() {
-        String message = String.valueOf(projectsPage
-                .getMessage());
+    public ProjectSteps getMessageAfterCreatingNewProject() {
+        String message = projectsPage
+                .getMessage();
         assertEquals(message, "Successfully added the new project.", "Project was not created");
-        return projectsPage;
+        return this;
     }
 
-    public ProjectsPage projectIsExist(Project project) {
+    public void projectIsExistOnTheProjectsPage(Project project) {
         projectsPage
                 .projectIsExist(project);
-        return projectsPage;
     }
 }

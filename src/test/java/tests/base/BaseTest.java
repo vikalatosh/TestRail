@@ -24,9 +24,9 @@ import java.util.concurrent.TimeUnit;
 public abstract class BaseTest {
     protected WebDriver driver;
     protected WebDriverWait wait;
-    protected String baseUrl;
-    protected String email;
-    protected String password;
+    protected String baseUrl = utils.PropertyReader.getProperty("TESTRAIL_URL", "testrail.baseUrl");
+    protected String email = utils.PropertyReader.getProperty("TESTRAIL_EMAIL", "testrail.email");
+    protected String password = utils.PropertyReader.getProperty("TESTRAIL_PASSWORD", "testrail.password");
     protected StartSteps startSteps;
     protected LoginSteps loginSteps;
     protected ProjectSteps projectSteps;
@@ -35,7 +35,6 @@ public abstract class BaseTest {
     @Step("Open browser")
     @BeforeMethod()
     public void setUp(@Optional("chrome") String browser, ITestContext testContext) {
-        log.info("Open browser");
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
@@ -46,9 +45,6 @@ public abstract class BaseTest {
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         wait = new WebDriverWait(driver, 20);
         driver.manage().window().maximize();
-        baseUrl = utils.PropertyReader.getProperty("TESTRAIL_URL", "testrail.baseUrl");
-        email = utils.PropertyReader.getProperty("TESTRAIL_EMAIL", "testrail.email");
-        password = utils.PropertyReader.getProperty("TESTRAIL_PASSWORD", "testrail.password");
         loginSteps = new LoginSteps(driver);
         projectSteps = new ProjectSteps(driver);
         startSteps = new StartSteps(driver);
@@ -58,7 +54,6 @@ public abstract class BaseTest {
     @Step("Close browser")
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
-        log.info("Close browser");
         driver.quit();
     }
 }
