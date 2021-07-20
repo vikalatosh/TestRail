@@ -35,14 +35,13 @@ public class TestCaseSteps {
     public TestCaseSteps isTestCaseModalPageOpened() {
         boolean isOpened = testCaseModal
                 .isPageOpened();
-        assertTrue(isOpened, "Projects page was not opened");
+        assertTrue(isOpened, "Test Case modal page was not opened");
         return this;
     }
 
     public TestCaseSteps createTestCase(TestCase testCase) {
         testCaseModal
-                .createTestCase(testCase)
-                .isPageOpened();
+                .createTestCase(testCase);
         return this;
     }
 }

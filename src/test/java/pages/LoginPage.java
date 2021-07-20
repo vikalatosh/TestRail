@@ -21,7 +21,7 @@ public class LoginPage extends BasePage {
         return isExist(LOGIN_BUTTON);
     }
 
-    @Step("Open Login page by URL: {baseURL}/index.php?/auth/login")
+    @Step("Open Login page by URL")
     public LoginPage openLoginPage(String baseUrl) {
         log.info("Open Login page by URL: {}/index.php?/auth/login", baseUrl);
         driver.get(baseUrl + "/index.php?/auth/login");

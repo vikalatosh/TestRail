@@ -29,7 +29,7 @@ public class ProjectSteps {
     public ProjectSteps isProjectModalPageOpened() {
         boolean isOpened = projectModalPage
                 .isPageOpened();
-        assertTrue(isOpened, "'Add Project' page was not opened");
+        assertTrue(isOpened, "Project modal page was not opened");
         return this;
     }
 
@@ -53,9 +53,8 @@ public class ProjectSteps {
         return this;
     }
 
-    public ProjectSteps projectIsExistOnTheProjectsPage(Project project) {
+    public void projectIsExistOnTheProjectsPage(Project project) {
         projectsPage
                 .projectIsExist(project);
-        return this;
     }
 }

@@ -28,17 +28,15 @@ public class LoginSteps {
         return this;
     }
 
-    public LoginSteps isHomePageOpened() {
+    public void isHomePageOpened() {
         boolean isOpened = homePage
                 .isPageOpened();
         assertTrue(isOpened, "Home page was not opened");
-        return this;
     }
 
-    public LoginSteps validateLoginPageMessage(String errorMessage) {
+    public void validateLoginPageMessage(String errorMessage) {
         String message = loginPage
                 .getLoginPageMessage();
         assertEquals(message, errorMessage, "Error message is not correct");
-        return this;
     }
 }

@@ -39,9 +39,9 @@ public class ProjectsPage extends BasePage {
         assertEquals(actualName, project.getName());
     }
 
-    public void openProjectDetails(Project project) {
+    public ProjectDetailsPage openProjectDetails(Project project) {
         driver.findElement(DASHBOARD_BUTTON).click();
         driver.findElement(By.xpath(String.format(PROJECT_NAME_TEXT, project.getName()))).click();
-        new ProjectDetailsPage(driver);
+        return new ProjectDetailsPage(driver);
     }
 }

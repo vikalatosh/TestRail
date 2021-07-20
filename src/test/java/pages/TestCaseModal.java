@@ -23,7 +23,7 @@ public class TestCaseModal extends BasePage {
         return isExist(PAGE_TITLE);
     }
 
-    @Step("Create new Test Case {testCase.getTitle()}")
+    @Step("Create new Test Case")
     public TestCaseModal createTestCase(TestCase testCase) {
         log.info("Create new Test Case {}", testCase.getTitle());
         new Input(driver, "Title").write(testCase.getTitle());

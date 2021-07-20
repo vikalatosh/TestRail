@@ -18,10 +18,9 @@ public class StartSteps {
         return this;
     }
 
-    public StartSteps isLoginPageOpened() {
+    public void isLoginPageOpened() {
         boolean isOpened = loginPage
                 .isPageOpened();
         assertTrue(isOpened, "Login page was not opened");
-        return this;
     }
 }
