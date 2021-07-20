@@ -32,7 +32,7 @@ public class BaseAdapter {
     public String get(int status, String url) {
         return
                 given().
-                        auth().basic(email, apiKey).
+                        auth().preemptive().basic(email, apiKey).
                         header("Content-Type", "application/json").
                         log().all().
                 when().

@@ -6,6 +6,8 @@ import lombok.Data;
 @Data
 @Builder
 public class ResponseStatus {
-    boolean status;
-    Result result;
+    int status;
+//    Result result;
+    String name;
+    int id;
 }

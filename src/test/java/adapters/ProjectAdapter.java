@@ -2,7 +2,6 @@ package adapters;
 
 import io.qameta.allure.Step;
 import models.Project;
-import models.ResponseProject;
 import models.ResponseStatus;
 
 public class ProjectAdapter extends BaseAdapter {
@@ -14,8 +13,8 @@ public class ProjectAdapter extends BaseAdapter {
     }
 
     @Step("Get Project")
-    public ResponseProject getProject(int id) {
-        String response = get(200, apiUrl + "get_project/:" + id);
-        return gson.fromJson(response, ResponseProject.class);
+    public ResponseStatus getProject(int status, Integer id) {
+        String response = get(status, apiUrl + "get_project/" + id);
+        return gson.fromJson(response, ResponseStatus.class);
     }
 }
