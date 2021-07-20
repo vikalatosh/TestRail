@@ -16,13 +16,13 @@ public class HomePage extends BasePage {
 
     @Step("Check Home page is opened")
     public boolean isPageOpened() {
-        log.info("Check Home page is opened by locator " + BANNER_LINK);
+        log.debug("Check Home page is opened by locator: {}", BANNER_LINK);
         return isExist(BANNER_LINK);
     }
 
     @Step("Click the button 'Add Project'")
     public HomePage clickButtonAddProject() {
-        log.info("Click the button 'Add Project'");
+        log.debug("Click the button 'Add Project' by locator: {}", BANNER_LINK);
         driver.findElement(ADD_PROJECT_BUTTON).click();
         return this;
     }

@@ -16,15 +16,15 @@ public class ProjectModalPage extends BasePage {
         super(driver);
     }
 
-    @Step("Check 'Add Project' page is opened")
+    @Step("Check Project modal page is opened")
     public boolean isPageOpened() {
-        log.info("Check 'Add Project' page is opened by locator " + BANNER_LINK);
+        log.debug("Check Project modal page is opened by locator: {}", BANNER_LINK);
         return isExist(BANNER_LINK);
     }
 
     @Step("Create new project")
     public ProjectsPage createProject(Project project) {
-        log.info("Create new project " + project.getName());
+        log.info("Create new project {}", project.getName());
         new Input(driver, "Name").write(project.getName());
         driver.findElement(ADD_PROJECT_BUTTON).click();
         return new ProjectsPage(driver);

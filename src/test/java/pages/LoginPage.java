@@ -17,30 +17,32 @@ public class LoginPage extends BasePage {
 
     @Step("Check Login page is opened")
     public boolean isPageOpened() {
-        log.info("Check Login page is opened by locator " + LOGIN_BUTTON);
+        log.debug("Check Login page is opened by locator: {}", LOGIN_BUTTON);
         return isExist(LOGIN_BUTTON);
     }
 
-    @Step("Open Login page")
+    @Step("Open Login page by URL: {baseURL}/index.php?/auth/login")
     public LoginPage openLoginPage(String baseUrl) {
-        log.info("Open Login page");
+        log.info("Open Login page by URL: {}/index.php?/auth/login", baseUrl);
         driver.get(baseUrl + "/index.php?/auth/login");
         return this;
     }
 
-    @Step("Log in by email {email}, password {password}")
+    @Step("Log in by email: {email}, password: {password}")
     public LoginPage login(String email, String password) {
-        log.info("Log in by email " + email + ", password " + password);
+        log.info("Log in by email: {}, password: {}", email, password);
         new Input(driver, "Name").write(email);
         new Input(driver, "Password").write(password);
         return this;
     }
 
+    @Step("Click the button Log in")
     public LoginPage clickLogIn() {
         driver.findElement(LOGIN_BUTTON).click();
         return this;
     }
 
+    @Step("Get message on the Login page")
     public String getLoginPageMessage() {
         return driver.findElement(LOGIN_PAGE_MESSAGE).getText();
     }

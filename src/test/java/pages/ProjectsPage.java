@@ -22,20 +22,20 @@ public class ProjectsPage extends BasePage {
 
     @Step("Check Projects page is opened")
     public boolean isPageOpened() {
-        log.info("Check Projects page is opened by locator " + BANNER_LINK);
+        log.debug("Check Projects page is opened by locator: {}", BANNER_LINK);
         return isExist(BANNER_LINK);
     }
 
     @Step("Get message on the page")
     public String getMessage() {
-        log.info("Get message on the page by locator " + MESSAGE);
+        log.debug("Get message on the page by locator: {}", MESSAGE);
         return driver.findElement(MESSAGE).getText();
     }
 
     @Step("Check project {actualName} is exist")
     public void projectIsExist(Project project) {
         String actualName = driver.findElement(By.xpath(String.format(PROJECT_NAME_TEXT, project.getName()))).getText();
-        log.info("Check project " + actualName + " is exist");
+        log.info("Check project {} is exist", actualName);
         assertEquals(actualName, project.getName());
     }
 
