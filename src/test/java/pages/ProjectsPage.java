@@ -12,7 +12,6 @@ import static org.testng.Assert.assertEquals;
 public class ProjectsPage extends BasePage {
     public static final By BANNER_LINK = By.id("bannerLink");
     public static final By DASHBOARD_BUTTON = By.xpath("//*[text()='Dashboard']");
-    //*[contains(text(),'Successfully added the new project.')]
     public static final By MESSAGE = By.cssSelector(".message-success");
     public static final String PROJECT_NAME_TEXT = "//*[contains(text(),'%s')]";
 
@@ -28,23 +27,21 @@ public class ProjectsPage extends BasePage {
     }
 
     @Step("Get message on the page")
-    public ProjectsPage getMessage() {
+    public String getMessage() {
         log.info("Get message on the page by locator " + MESSAGE);
-        driver.findElement(MESSAGE).getText();
-        return this;
+        return driver.findElement(MESSAGE).getText();
     }
 
     @Step("Check project {actualName} is exist")
-    public ProjectsPage projectIsExist(Project project) {
+    public void projectIsExist(Project project) {
         String actualName = driver.findElement(By.xpath(String.format(PROJECT_NAME_TEXT, project.getName()))).getText();
         log.info("Check project " + actualName + " is exist");
         assertEquals(actualName, project.getName());
-        return this;
     }
 
-    public ProjectDetailsPage openProjectDetails(Project project) {
+    public void openProjectDetails(Project project) {
         driver.findElement(DASHBOARD_BUTTON).click();
         driver.findElement(By.xpath(String.format(PROJECT_NAME_TEXT, project.getName()))).click();
-        return new ProjectDetailsPage(driver);
+        new ProjectDetailsPage(driver);
     }
 }

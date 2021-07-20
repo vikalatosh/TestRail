@@ -8,8 +8,7 @@ import org.openqa.selenium.WebDriver;
 
 @Log4j2
 public class LoginPage extends BasePage {
-    public static final By EMAIL_INPUT = By.id("name");
-    public static final By PASSWORD_INPUT = By.id("password");
+    public static final By LOGIN_PAGE_MESSAGE = By.cssSelector(".loginpage-message");
     public static final By LOGIN_BUTTON = By.id("button_primary");
 
     public LoginPage(WebDriver driver) {
@@ -30,11 +29,19 @@ public class LoginPage extends BasePage {
     }
 
     @Step("Log in by email {email}, password {password}")
-    public HomePage login(String email, String password) {
+    public LoginPage login(String email, String password) {
         log.info("Log in by email " + email + ", password " + password);
         new Input(driver, "Name").write(email);
         new Input(driver, "Password").write(password);
+        return this;
+    }
+
+    public LoginPage clickLogIn() {
         driver.findElement(LOGIN_BUTTON).click();
-        return new HomePage(driver);
+        return this;
+    }
+
+    public String getLoginPageMessage() {
+        return driver.findElement(LOGIN_PAGE_MESSAGE).getText();
     }
 }
