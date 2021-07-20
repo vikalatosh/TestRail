@@ -6,20 +6,14 @@ import tests.base.BaseTest;
 
 public class LoginTest extends BaseTest {
 
-    @DataProvider(name = "Login")
-    public Object[][] loginData11() {
-        return new Object[][]{
-                {email, password},
-        };
-    }
-
-    @Test(description = "Login should be successful", dataProvider = "Login")
-    public void login(String email, String password) {
+    @Test(description = "Login should be successful")
+    public void login() {
         startSteps
                 .openLoginPage(baseUrl)
                 .isLoginPageOpened();
         loginSteps
                 .loginByEmailAndPassword(email, password)
+                .clickTheButtonLogIn()
                 .isHomePageOpened();
     }
 
