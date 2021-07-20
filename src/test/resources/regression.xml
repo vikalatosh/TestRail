@@ -13,6 +13,7 @@
     <test name="Thread 2">
         <classes>
             <class name="tests.TestCaseTest"/>
+            <class name="tests.ApiTest"/>
         </classes>
     </test> <!-- Test -->
 </suite>
