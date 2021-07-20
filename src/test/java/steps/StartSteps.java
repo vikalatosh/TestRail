@@ -12,15 +12,16 @@ public class StartSteps {
         loginPage = new LoginPage(driver);
     }
 
-    public LoginPage openLoginPage(String baseUrl) {
-        return loginPage
+    public StartSteps openLoginPage(String baseUrl) {
+        loginPage
                 .openLoginPage(baseUrl);
+        return this;
     }
 
-    public LoginPage isPageOpened() {
+    public StartSteps isLoginPageOpened() {
         boolean isOpened = loginPage
                 .isPageOpened();
         assertTrue(isOpened, "Login page was not opened");
-        return loginPage;
+        return this;
     }
 }
