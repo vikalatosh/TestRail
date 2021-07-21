@@ -11,7 +11,8 @@ import static pages.HomePage.DASHBOARD_BUTTON;
 
 @Log4j2
 public class ProjectsPage extends BasePage {
-    public static final By BANNER_LINK = By.id("bannerLink");
+//    public static final By BANNER_LINK = By.id("bannerLink");
+public static final By PROJECTS_PAGE_TITLE = By.xpath("//div[contains(text(),'Projects')]");
     public static final By MESSAGE = By.cssSelector(".message-success");
     public static final String PROJECT_NAME_TEXT = "//*[contains(text(),'%s')]";
     public static final String DELETE_ICON = "//*[text()='%s']//ancestor::*[contains(@class,'odd hoverSensitive')]" +
@@ -26,8 +27,8 @@ public class ProjectsPage extends BasePage {
 
     @Step("Check Projects page is opened")
     public boolean isPageOpened() {
-        log.debug("Check Projects page is opened by locator: {}", BANNER_LINK);
-        return isExist(BANNER_LINK);
+        log.debug("Check Projects page is opened by locator: {}", PROJECTS_PAGE_TITLE);
+        return isExist(PROJECTS_PAGE_TITLE);
     }
 
     @Step("Get message on the page")
