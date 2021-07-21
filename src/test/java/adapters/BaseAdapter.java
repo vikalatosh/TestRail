@@ -35,9 +35,24 @@ public class BaseAdapter {
                         auth().preemptive().basic(email, apiKey).
                         header("Content-Type", "application/json").
                         log().all().
-                when().
+                        when().
                         get(url).
-                then().
+                        then().
+                        log().all().
+                        statusCode(status).
+                        extract().body().asString();
+    }
+
+    @Step("Perform delete")
+    public String delete(int status, String url) {
+        return
+                given().
+                        auth().preemptive().basic(email, apiKey).
+                        header("Content-Type", "application/json").
+                        log().all().
+                        when().
+                        post(url).
+                        then().
                         log().all().
                         statusCode(status).
                         extract().body().asString();

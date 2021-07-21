@@ -13,8 +13,8 @@ import static org.testng.Assert.assertEquals;
 
 public class ApiTest {
 
-    @Test(description = "Project should be created")
-    public void projectTest() {
+    @Test(description = "Project should be created by using REST API")
+    public void createProjectTestByApi() {
         FakeValuesService fakeValuesService = new FakeValuesService(
                 new Locale("en-GB"), new RandomService());
         Project project = Project.builder()
@@ -26,16 +26,17 @@ public class ApiTest {
         assertEquals(actualGet.getName(), project.getName());
     }
 
-//    @Test(description = "Get Project data")
-//    public void get() {
-//        FakeValuesService fakeValuesService = new FakeValuesService(
-//                new Locale("en-GB"), new RandomService());
-//        Project project = Project.builder()
-//                .name(fakeValuesService.regexify("[A-Z]{10}"))
-//                .build();
-//        ResponseStatus actual = new ProjectAdapter().create(project, 200);
-//        assertEquals(actual.getResult().getName(), project.getName());
-//        ResponseStatus responseStatus = new ProjectAdapter().getProject(actual.getResult().getId());
-//        System.out.println(responseStatus);
-//    }
+    @Test(description = "Project should be deleted by using REST API")
+    public void deleteProjectTest() {
+        FakeValuesService fakeValuesService = new FakeValuesService(
+                new Locale("en-GB"), new RandomService());
+        Project project = Project.builder()
+                .name(fakeValuesService.regexify("[A-Z]{10}"))
+                .build();
+        ResponseStatus actual = new ProjectAdapter().create(project, 200);
+        assertEquals(actual.getName(), project.getName());
+        ResponseStatus actualGet = new ProjectAdapter().getProject(200, actual.getId());
+        assertEquals(actualGet.getName(), project.getName());
+        new ProjectAdapter().deleteProject(200, actual.getId());
+    }
 }

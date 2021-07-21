@@ -17,4 +17,10 @@ public class ProjectAdapter extends BaseAdapter {
         String response = get(status, apiUrl + "get_project/" + id);
         return gson.fromJson(response, ResponseStatus.class);
     }
+
+    @Step("Delete Project")
+    public ResponseStatus deleteProject(int status, Integer id) {
+        String response = delete(status, apiUrl + "delete_project/" + id);
+        return gson.fromJson(response, ResponseStatus.class);
+    }
 }
