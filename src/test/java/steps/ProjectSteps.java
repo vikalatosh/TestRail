@@ -53,8 +53,22 @@ public class ProjectSteps {
         return this;
     }
 
-    public void projectIsExistOnTheProjectsPage(Project project) {
+    public ProjectSteps projectIsExistOnTheProjectsPage(Project project) {
         projectsPage
                 .projectIsExist(project);
+        return this;
+    }
+
+    public ProjectSteps deleteCreatedProject(Project project) {
+        projectsPage
+                .deleteProject(project);
+        return this;
+    }
+
+    public ProjectSteps getMessageAfterDeletingProject() {
+        String message = projectsPage
+                .getMessage();
+        assertEquals(message, "Successfully deleted the project.", "Project was not deleted");
+        return this;
     }
 }

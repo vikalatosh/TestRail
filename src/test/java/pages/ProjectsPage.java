@@ -7,14 +7,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import static org.testng.Assert.assertEquals;
+import static pages.HomePage.DASHBOARD_BUTTON;
 
 @Log4j2
 public class ProjectsPage extends BasePage {
     public static final By BANNER_LINK = By.id("bannerLink");
-    public static final By DASHBOARD_BUTTON = By.xpath("//*[text()='Dashboard']");
     public static final By MESSAGE = By.cssSelector(".message-success");
     public static final String PROJECT_NAME_TEXT = "//*[contains(text(),'%s')]";
-
+    public static final String DELETE_ICON = "//*[text()='%s']//ancestor::*[contains(@class,'odd hoverSensitive')]" +
+            "//*[@class='icon-small-delete']";
+    public static final String DELETE_CHECKBOX = "//*[contains(text(),'Yes, delete this project')]" +
+            "//ancestor::label//*[@name='deleteCheckbox']";
+    public static final String OK_BUTTON = "//*[@id='deleteDialog']//*[contains(@class,'dialog-action-default')]";
 
     public ProjectsPage(WebDriver driver) {
         super(driver);
@@ -39,9 +43,18 @@ public class ProjectsPage extends BasePage {
         assertEquals(actualName, project.getName());
     }
 
+    @Step("Open Project details page")
     public ProjectDetailsPage openProjectDetails(Project project) {
         driver.findElement(DASHBOARD_BUTTON).click();
         driver.findElement(By.xpath(String.format(PROJECT_NAME_TEXT, project.getName()))).click();
         return new ProjectDetailsPage(driver);
+    }
+
+    @Step("Delete created Project")
+    public ProjectsPage deleteProject(Project project) {
+        driver.findElement(By.xpath(String.format(DELETE_ICON, project.getName()))).click();
+        driver.findElement(By.xpath(DELETE_CHECKBOX)).click();
+        driver.findElement(By.xpath(OK_BUTTON)).click();
+        return this;
     }
 }
