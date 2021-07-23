@@ -16,6 +16,7 @@
         <classes>
             <class name="tests.TestCaseTest"/>
             <class name="tests.ApiTest"/>
+            <class name="tests.TestRunTest"/>
         </classes>
     </test> <!-- Test -->
 </suite>
