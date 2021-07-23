@@ -26,9 +26,9 @@ public class TestCaseTest extends BaseTest {
                 .createNewProject(project)
                 .isProjectsPageOpened()
                 .getMessageAfterCreatingNewProject()
-                .projectIsExistOnTheProjectsPage(project);
+                .projectIsExistOnTheProjectsPage(project)
+                .openProjectDetailsPage(project);
         testCaseSteps
-                .openProjectDetailsPage(project)
                 .clickTheButtonAdd()
                 .isTestCaseModalPageOpened()
                 .createTestCase(testCase);

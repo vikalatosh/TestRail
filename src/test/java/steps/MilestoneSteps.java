@@ -1,7 +1,6 @@
 package steps;
 
 import models.Milestone;
-import models.Project;
 import org.openqa.selenium.WebDriver;
 import pages.MilestoneModalPage;
 import pages.MilestonesPage;
@@ -21,12 +20,6 @@ public class MilestoneSteps {
         projectDetailsPage = new ProjectDetailsPage(driver);
         milestonesPage = new MilestonesPage(driver);
         milestoneModalPage = new MilestoneModalPage(driver);
-    }
-
-    public MilestoneSteps openProjectDetailsPage(Project project) {
-        projectsPage
-                .openProjectDetails(project);
-        return this;
     }
 
     public MilestoneSteps clickTheButtonAdd() {

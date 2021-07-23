@@ -1,6 +1,5 @@
 package steps;
 
-import models.Project;
 import models.TestCase;
 import org.openqa.selenium.WebDriver;
 import pages.ProjectDetailsPage;
@@ -18,12 +17,6 @@ public class TestCaseSteps {
         projectsPage = new ProjectsPage(driver);
         projectDetailsPage = new ProjectDetailsPage(driver);
         testCaseModalPage = new TestCaseModalPage(driver);
-    }
-
-    public TestCaseSteps openProjectDetailsPage(Project project) {
-        projectsPage
-                .openProjectDetails(project);
-        return this;
     }
 
     public TestCaseSteps clickTheButtonAdd() {

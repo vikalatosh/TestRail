@@ -26,9 +26,9 @@ public class MilestoneTest extends BaseTest {
                 .createNewProject(project)
                 .isProjectsPageOpened()
                 .getMessageAfterCreatingNewProject()
-                .projectIsExistOnTheProjectsPage(project);
+                .projectIsExistOnTheProjectsPage(project)
+                .openProjectDetailsPage(project);
         milestoneSteps
-                .openProjectDetailsPage(project)
                 .clickTheButtonAdd()
                 .isMilestoneModalPageOpened()
                 .createMilestone(milestone)
