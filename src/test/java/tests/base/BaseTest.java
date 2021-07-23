@@ -12,10 +12,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
-import steps.LoginSteps;
-import steps.ProjectSteps;
-import steps.StartSteps;
-import steps.TestCaseSteps;
+import steps.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -31,6 +28,7 @@ public abstract class BaseTest {
     protected LoginSteps loginSteps;
     protected ProjectSteps projectSteps;
     protected TestCaseSteps testCaseSteps;
+    protected MilestoneSteps milestoneSteps;
 
     @Step("Open browser")
     @BeforeMethod()
@@ -49,6 +47,7 @@ public abstract class BaseTest {
         projectSteps = new ProjectSteps(driver);
         startSteps = new StartSteps(driver);
         testCaseSteps = new TestCaseSteps(driver);
+        milestoneSteps = new MilestoneSteps(driver);
     }
 
     @Step("Close browser")

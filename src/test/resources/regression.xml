@@ -8,6 +8,8 @@
         <classes>
             <class name="tests.LoginTest"/>
             <class name="tests.ProjectTest"/>
+            <class name="tests.MilestoneTest"/>
+
         </classes>
     </test> <!-- Test -->
     <test name="Thread 2">
