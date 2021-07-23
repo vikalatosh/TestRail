@@ -20,7 +20,7 @@ public class TestCaseFactory {
                 .template("Test Case (Text)")
                 .type("Regression")
                 .priority("High")
-                .estimate("estimate")
+                .estimate("15")
                 .references("references")
                 .automationType("Ranorex")
                 .preconditions("")
