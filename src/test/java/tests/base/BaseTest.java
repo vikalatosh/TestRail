@@ -29,6 +29,7 @@ public abstract class BaseTest {
     protected ProjectSteps projectSteps;
     protected TestCaseSteps testCaseSteps;
     protected MilestoneSteps milestoneSteps;
+    protected TestRunSteps testRunSteps;
 
     @Step("Open browser")
     @BeforeMethod()
@@ -48,6 +49,7 @@ public abstract class BaseTest {
         startSteps = new StartSteps(driver);
         testCaseSteps = new TestCaseSteps(driver);
         milestoneSteps = new MilestoneSteps(driver);
+        testRunSteps = new TestRunSteps(driver);
     }
 
     @Step("Close browser")
