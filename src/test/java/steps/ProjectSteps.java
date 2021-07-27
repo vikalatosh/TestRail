@@ -71,4 +71,10 @@ public class ProjectSteps {
         assertEquals(message, "Successfully deleted the project.", "Project was not deleted");
         return this;
     }
+
+    public ProjectSteps openProjectDetailsPage(Project project) {
+        projectsPage
+                .openProjectDetails(project);
+        return this;
+    }
 }

@@ -35,9 +35,9 @@ public class BaseAdapter {
                         auth().preemptive().basic(email, apiKey).
                         header("Content-Type", "application/json").
                         log().all().
-                        when().
+                when().
                         get(url).
-                        then().
+                then().
                         log().all().
                         statusCode(status).
                         extract().body().asString();
@@ -50,9 +50,9 @@ public class BaseAdapter {
                         auth().preemptive().basic(email, apiKey).
                         header("Content-Type", "application/json").
                         log().all().
-                        when().
+                when().
                         post(url).
-                        then().
+                then().
                         log().all().
                         statusCode(status).
                         extract().body().asString();

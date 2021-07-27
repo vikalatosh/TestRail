@@ -2,17 +2,17 @@ package tests;
 
 import models.Project;
 import models.ProjectFactory;
-import models.TestCase;
-import models.TestCaseFactory;
+import models.TestRun;
+import models.TestRunFactory;
 import org.testng.annotations.Test;
 import tests.base.BaseTest;
 
-public class TestCaseTest extends BaseTest {
+public class TestRunTest extends BaseTest {
 
-    @Test(description = "Test case should be created")
-    public void testCaseShouldBeCreated() {
+    @Test(description = "Test Run should be created")
+    public void testRunShouldBeCreated() {
         Project project = ProjectFactory.get();
-        TestCase testCase = TestCaseFactory.get();
+        TestRun testRun = TestRunFactory.get();
         startSteps
                 .openLoginPage(baseUrl)
                 .isLoginPageOpened();
@@ -28,9 +28,12 @@ public class TestCaseTest extends BaseTest {
                 .getMessageAfterCreatingNewProject()
                 .projectIsExistOnTheProjectsPage(project)
                 .openProjectDetailsPage(project);
-        testCaseSteps
+        testRunSteps
                 .clickTheButtonAdd()
-                .isTestCaseModalPageOpened()
-                .createTestCase(testCase);
+                .isTestRunModalPageOpened()
+                .createNewTestRun(testRun)
+                .validateMessageAfterAdditionOfTestRun()
+                .openTestRunsPage()
+                .newTestRunIsExist(testRun);
     }
 }

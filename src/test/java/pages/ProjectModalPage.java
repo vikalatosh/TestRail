@@ -10,7 +10,6 @@ import org.openqa.selenium.WebDriver;
 @Log4j2
 public class ProjectModalPage extends BasePage {
     public static final By PRODUCT_MODAL_PAGE_TITLE = By.xpath("//div[contains(text(),'Add Project')]");
-    //    public static final By BANNER_LINK = By.xpath("//*[contains(@class,'content-header-title')]");
     public static final By ADD_PROJECT_BUTTON = By.id("accept");
 
     public ProjectModalPage(WebDriver driver) {

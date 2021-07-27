@@ -8,12 +8,15 @@
         <classes>
             <class name="tests.LoginTest"/>
             <class name="tests.ProjectTest"/>
+            <class name="tests.MilestoneTest"/>
+
         </classes>
     </test> <!-- Test -->
     <test name="Thread 2">
         <classes>
             <class name="tests.TestCaseTest"/>
             <class name="tests.ApiTest"/>
+            <class name="tests.TestRunTest"/>
         </classes>
     </test> <!-- Test -->
 </suite>

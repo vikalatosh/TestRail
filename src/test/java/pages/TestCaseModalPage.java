@@ -9,11 +9,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 @Log4j2
-public class TestCaseModal extends BasePage {
+public class TestCaseModalPage extends BasePage {
     public static final By PAGE_TITLE = By.xpath("//div[contains(text(),'Add Test Case')]");
     public static final By ADD_TEST_CASE_BUTTON = By.id("accept");
 
-    public TestCaseModal(WebDriver driver) {
+    public TestCaseModalPage(WebDriver driver) {
         super(driver);
     }
 
@@ -24,7 +24,7 @@ public class TestCaseModal extends BasePage {
     }
 
     @Step("Create new Test Case")
-    public TestCaseModal createTestCase(TestCase testCase) {
+    public TestCaseModalPage createTestCase(TestCase testCase) {
         log.info("Create new Test Case {}", testCase.getTitle());
         new Input(driver, "Title").write(testCase.getTitle());
         new DropDownSearch(driver, "Section").select(testCase.getSection());
