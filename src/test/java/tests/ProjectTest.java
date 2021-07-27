@@ -25,4 +25,25 @@ public class ProjectTest extends BaseTest {
                 .getMessageAfterCreatingNewProject()
                 .projectIsExistOnTheProjectsPage(project);
     }
+
+    @Test(description = "Project should be deleted")
+    public void projectShouldBeDeleted() {
+        Project project = ProjectFactory.get();
+        startSteps
+                .openLoginPage(baseUrl)
+                .isLoginPageOpened();
+        loginSteps
+                .loginByEmailAndPassword(email, password)
+                .clickTheButtonLogIn()
+                .isHomePageOpened();
+        projectSteps
+                .clickTheButtonAddProject()
+                .isProjectModalPageOpened()
+                .createNewProject(project)
+                .isProjectsPageOpened()
+                .getMessageAfterCreatingNewProject()
+                .projectIsExistOnTheProjectsPage(project)
+                .deleteCreatedProject(project)
+                .getMessageAfterDeletingProject();
+    }
 }

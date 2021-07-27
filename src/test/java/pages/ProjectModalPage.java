@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 
 @Log4j2
 public class ProjectModalPage extends BasePage {
-    public static final By BANNER_LINK = By.xpath("//*[contains(@class,'content-header-title')]");
+    public static final By PRODUCT_MODAL_PAGE_TITLE = By.xpath("//div[contains(text(),'Add Project')]");
     public static final By ADD_PROJECT_BUTTON = By.id("accept");
 
     public ProjectModalPage(WebDriver driver) {
@@ -18,8 +18,8 @@ public class ProjectModalPage extends BasePage {
 
     @Step("Check Project modal page is opened")
     public boolean isPageOpened() {
-        log.debug("Check Project modal page is opened by locator: {}", BANNER_LINK);
-        return isExist(BANNER_LINK);
+        log.debug("Check Project modal page is opened by locator: {}", PRODUCT_MODAL_PAGE_TITLE);
+        return isExist(PRODUCT_MODAL_PAGE_TITLE);
     }
 
     @Step("Create new project")
