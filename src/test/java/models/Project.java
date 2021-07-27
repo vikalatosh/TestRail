@@ -1,10 +1,20 @@
 package models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import lombok.Builder;
 import lombok.Data;
 
 @Data
 @Builder
 public class Project {
-    String name, code, announcement, show_announcement, suite_mode;
+    @Expose
+    String name;
+    @Expose(serialize = false)
+    String announcement;
+    @SerializedName("show_announcement")
+    @Expose(serialize = false)
+    boolean showAnnouncement;
+    @SerializedName("suite_mode")
+    Integer suiteMode;
 }
