@@ -1,7 +1,12 @@
-Test automation framework for https://www.gurock.com/testrail/
+Test automation framework for Test Case Management Software - TestRail
+
+<a href="https://www.gurock.com/testrail">
+<img class="gk-header-sticky-logo-wrapper" src="https://media.gurock.com/gk-media/logos/testrail-logo-with-tagline.png" alt="Testrail Logo">
+</a>
 
 # Technologies/Libraries
 
+- Java 11
 - TestNG 7.1.0
 - Maven 3.8.1
 - Selenium 3.141.59
