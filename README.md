@@ -44,10 +44,12 @@ Tested on: https://www.gurock.com/testrail/
 - [REST API] Create new Project. Expected: Response Status 200, response returns valid project data (name).
 - [REST API] Delete the Project. Expected: Project is created, is existed on the Projects page and is deleted.
 
-- **Checking of Section**
+**Checking of Section**
+
 - [REST API] Create a new Section into the Project. Expected: Response Status 200, response returns valid section data.
 
-- **Checking of Test Case**
+**Checking of Test Case**
+
 - Create new Test Case into the Project. Expected: Test Case is created and exist on the Project details page.
 - Delete the Test Case. Expected: Test Case is created, is existed on the Project details page and is deleted.
 - [REST API] Create the new Test Case into the Section. Expected: Response Status 200, response returns valid test case
@@ -55,11 +57,13 @@ Tested on: https://www.gurock.com/testrail/
 - [REST API] Delete the Test Case. Expected: Test Case is created, is existed on the Project details page and is
   deleted.
 
-- **Checking of Milestone**
+**Checking of Milestone**
+
 - Create a new Milestone into the Project. Expected: Milestone is created and exist on the Project details page.
 - Delete the Milestone. Expected: Milestone is created, is existed on the Project details page and is deleted.
 
-- **Checking of Test Run**
+**Checking of Test Run**
+
 - Create a new Test Run into the Project. Expected: Test Run is created and exist on the Project details page.
 - Delete the Test Run. Expected: Test Run is created, is existed on the Project details page and is deleted.
 
