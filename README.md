@@ -1,7 +1,7 @@
 Test automation framework for Test Case Management Software - TestRail
 
 <a href="https://www.gurock.com/testrail">
-<img class="gk-header-sticky-logo-wrapper" src="https://media.gurock.com/gk-media/logos/testrail-logo-with-tagline.png" alt="Testrail Logo">
+<img class="gk-header-sticky-logo-wrapper" src="https://tudip.com/wp-content/uploads/2014/12/blog-images-testrail.jpg" alt="Testrail Logo">
 </a>
 
 # Technologies/Libraries
