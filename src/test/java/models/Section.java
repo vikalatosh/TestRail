@@ -1,6 +1,7 @@
 package models;
 
 import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import lombok.Builder;
 import lombok.Data;
 
@@ -9,11 +10,12 @@ import lombok.Data;
 public class Section {
     @Expose(serialize = false)
     String description;
-    //    @SerializedName("suite_id")
-//    @Expose(serialize = false)
-//    int suiteId;
-//    @SerializedName("parent_id")
-//    @Expose(serialize = false)
-//    int parentId;
+    @SerializedName("suite_id")
+    @Expose(serialize = false)
+    int suiteId;
+    @SerializedName("parent_id")
+    @Expose(serialize = false)
+    int parentId;
+    @Expose()
     String name;
 }

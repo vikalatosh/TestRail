@@ -12,34 +12,37 @@ public class ResponseTestCase {
     int createdBy;
     @SerializedName("created_on")
     String createdOn;
+    @Expose()
     String estimate;
     @SerializedName("estimate_forecast")
     String estimateForecast;
+    @Expose()
     int id;
-    @Expose(serialize = false)
+    @Expose()
     @SerializedName("milestone_id")
     String milestone;
-    @Expose(serialize = false)
+    @Expose()
     @SerializedName("priority_id")
     String priority;
     String refs;
     @SerializedName("suite_id")
-    @Expose(serialize = false)
+    @Expose()
     int suiteId;
-    @Expose(serialize = false)
+    @Expose()
     @SerializedName("section_id")
     int sectionId;
-    @Expose(serialize = false)
+    @Expose()
     @SerializedName("template_id")
     String template;
+    @Expose()
     String title;
-    @Expose(serialize = false)
+    @Expose()
     @SerializedName("type_id")
     String type;
-    @Expose(serialize = false)
+    @Expose()
     @SerializedName("update_by")
     int updatedBy;
-    @Expose(serialize = false)
+    @Expose()
     @SerializedName("update_on")
     int updateOn;
 }

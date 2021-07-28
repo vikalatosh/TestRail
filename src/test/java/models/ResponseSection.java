@@ -8,18 +8,20 @@ import lombok.Data;
 @Data
 @Builder
 public class ResponseSection {
+    @Expose()
     String description;
-    @Expose(serialize = false)
+    @Expose()
     @SerializedName("suite_id")
     int suiteId;
-    @Expose(serialize = false)
+    @Expose()
     @SerializedName("parent_id")
     int parentId;
+    @Expose()
     int id;
-    @Expose(serialize = false)
+    @Expose()
     int depth;
+    @Expose()
     String name;
-    @Expose(serialize = false)
     @SerializedName("display_order")
     int displayOrder;
 }
