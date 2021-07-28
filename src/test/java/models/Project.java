@@ -16,5 +16,6 @@ public class Project {
     @Expose(serialize = false)
     boolean showAnnouncement;
     @SerializedName("suite_mode")
+    @Expose
     Integer suiteMode;
 }
